@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Lists</h2>
+
+    {% if lists %}
+        {% for list in lists %}
+            <div class="task-list-box">
+                <h3>{{ list.name }}</h3>
+
+                {% if list.tasks.all|length %}
+                    <ul class="tasks">
+                        {% for task in list.tasks.all %}
+                            <li class="task">
+                                <span class="task-title">{{ task.title }}</span>
+                                <a href="{% url 'task-delete' task.pk %}" class="delete-btn">✖</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="empty">No tasks in this list</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">No lists created yet</p>
+    {% endif %}
+</div>
+{% endblock %}

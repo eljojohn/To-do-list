@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+<body>
+
+<header class="app-header">
+    <h1 class="app-title">To-Do</h1>
+    <a href="{% url 'task-add' %}" class="add-btn">＋ Add Task</a>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>
